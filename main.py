@@ -47,3 +47,42 @@ print(data.agg({ # printing the min max and median
 
 print(data["Age"].value_counts())#value_counts gives the count of rows in each catogory 
 
+
+
+#consept group 
+print(data[["Sex","Age"]].groupby("Sex").mean())
+
+print(data.groupby("Sex")["Age"].mean())
+
+print(data.groupby("Pclass")["Age"].mean())
+print(data.groupby("Pclass")["Fare"].mean())
+
+print(data.groupby(["Sex","Pclass"])["Fare"].mean())
+
+a = data.sort_values(by="Age")
+print(a[["Name","Age"]])
+
+b = data.sort_values(by="Age",ascending=False)
+print(b[["Name","Age"]])
+
+
+#CREATING A NEW COLLUM 
+data["lowercasename"] = data["Name"].str.lower()
+print(data.head())
+
+#creating a collum named gender 
+data["Gender"] = data["Sex"].replace({"male":"M","female":"F"})
+print(data.head(8))
+
+#PRACTICE QUESTION
+#teen=data.loc[data["Age"]>12&(data["Age"]<18)]  _____ class_2_3__3 = data2[(data2["Pclass"] == 2) | (data2["Pclass"] == 3)]
+intwen = data[(data["Age"] >= 20) & (data["Age"] <= 40)]
+print(intwen[["Name","Fare"]])
+
+# GET the name class of pass who paid More than 100
+morethanhun = data[(data["Fare"] >= 100)&(data["Pclass"] == "3")]
+print(morethanhun[["Name","Pclass","Fare"]])
+
+# GET SURVIVED AND IN CLASS 3  
+survivedclass3 = data[(data["Survived"]== 1)]
+print(survivedclass3["Name"])

@@ -15,3 +15,10 @@ print(child.shape)
 print(teen.shape)
 print(adult.shape)
 
+#ADD A FARE PER PERSON AND // Siblings/Spouses Aboard   +1
+data["Fareperperson"] = data["Fare"]// (data["Siblings/Spouses Aboard"]+1)
+print(data.head(11))
+
+
+
+#
